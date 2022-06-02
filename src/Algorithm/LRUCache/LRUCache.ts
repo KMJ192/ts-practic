@@ -111,6 +111,14 @@ class DoublyLinkedList<T> {
   public length(): number {
     return this.size;
   }
+
+  public top(): DLLNode<T> | null {
+    return this.front;
+  }
+
+  public bottom(): DLLNode<T> | null {
+    return this.rear;
+  }
 }
 
 class LRUCache {
@@ -124,7 +132,7 @@ class LRUCache {
     this.list = new DoublyLinkedList();
   }
 
-  get(key: number): number {
+  public get(key: number): number {
     if (this.link.has(key)) {
       const curNode = this.link.get(key) as DLLNode<Tuple<number, number>>;
       const [k, v] = curNode.value;
@@ -136,7 +144,7 @@ class LRUCache {
     return -1;
   }
 
-  put(key: number, value: number): void {
+  public put(key: number, value: number): void {
     if (this.link.has(key)) {
       const curNode = this.link.get(key) as DLLNode<Tuple<number, number>>;
       this.list.remove(curNode);
@@ -150,19 +158,32 @@ class LRUCache {
       this.list.push_front(MakePair<number, number>(key, value)),
     );
   }
+
+  public display() {
+    console.log(this.list.bottom()?.value);
+  }
 }
 
 function lruCache() {
-  const cache = new LRUCache(2);
+  const cache = new LRUCache(3);
+  cache.put(0, 0);
+  cache.display(); // 0
   cache.put(1, 1);
+  cache.display(); // 0
+  cache.put(1, 1);
+  cache.display(); // 0
   cache.put(2, 2);
-  console.log(cache.get(1)); // 1
-  cache.put(3, 3);
-  console.log(cache.get(2)); // 2
-  cache.put(4, 4);
-  console.log(cache.get(1));
-  console.log(cache.get(3));
-  console.log(cache.get(4));
+  cache.display(); // 0
+  cache.put(0, 0);
+  cache.display(); // 1
+  cache.put(9, 9);
+  cache.display(); // 2
+  cache.put(8, 8);
+  cache.display(); // 0
+  cache.put(2, 2);
+  cache.display(); // 9
+  cache.put(1, 1);
+  cache.display(); // 8
 }
 
 export default lruCache;

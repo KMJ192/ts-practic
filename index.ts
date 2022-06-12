@@ -1,10 +1,7 @@
-// import AutoCompletion from '@src/Algorithm/AutoCompletion';
-// AutoCompletion();
-// import lruCache from '@src/Algorithm/LRUCache/LRUCache';
-import lfuCache from '@src/Algorithm/LFUCache/LFUCache';
+import { LinkedListRun } from '@src/DataStructure/LinkedList';
 
 function App() {
-  lfuCache();
+  LinkedListRun();
 }
 
 App();

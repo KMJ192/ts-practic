@@ -1,7 +1,7 @@
-import { LinkedListRun } from '@src/DataStructure/LinkedList';
+import { run } from '@src/Algorithm/SlidingWindow';
 
 function App() {
-  LinkedListRun();
+  run();
 }
 
 App();

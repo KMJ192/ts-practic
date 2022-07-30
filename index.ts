@@ -1,8 +1,7 @@
-import { run } from '@src/Algorithm/SlidingWindow';
-// import { run } from '@src/Algorithm/SlidingWindow/LongestSubstr';
+import CreateBST from '@src/Algorithm/CreateBST';
 
 function App() {
-  run();
+  CreateBST();
 }
 
 App();
